@@ -59,12 +59,28 @@
 				150CB3A12C977B2700691133 /* AppDelegate.swift */,
 				150CB3A32C977B2700691133 /* SceneDelegate.swift */,
 				150CB3A52C977B2700691133 /* ColorizerViewController.swift */,
+				150CB3B52C981BDC00691133 /* New Group */,
 				150CB3A72C977B2700691133 /* Main.storyboard */,
 				150CB3AA2C977B2800691133 /* Assets.xcassets */,
 				150CB3AC2C977B2800691133 /* LaunchScreen.storyboard */,
 				150CB3AF2C977B2800691133 /* Info.plist */,
 			);
 			path = ColorizedApp;
+			sourceTree = "<group>";
+		};
+		150CB3B52C981BDC00691133 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				150CB3B62C981BDF00691133 /* New Group */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		150CB3B62C981BDF00691133 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

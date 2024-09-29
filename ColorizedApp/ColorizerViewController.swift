@@ -12,7 +12,7 @@ class ColorizerViewController: UIViewController {
     @IBOutlet weak var colorizedView: UIView!
     
     @IBOutlet weak var redSlider: UISlider!
-    @IBOutlet weak var greenSlider: UISlider!
+    @IBOutlet	 weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
     @IBOutlet weak var redValueLabel: UILabel!
@@ -28,7 +28,7 @@ class ColorizerViewController: UIViewController {
         setupView()
     }
     
-    func setupView() {
+    private func setupView() {
         colorizedView.layer.cornerRadius = view.frame.width / 15
         colorizedView.backgroundColor = UIColor(red: redColorValue, green: greenColorValue, blue: blueColorValue, alpha: 1)
     }
