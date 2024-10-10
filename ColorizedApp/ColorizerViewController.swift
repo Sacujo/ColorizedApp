@@ -12,43 +12,62 @@ class ColorizerViewController: UIViewController {
     @IBOutlet weak var colorizedView: UIView!
     
     @IBOutlet weak var redSlider: UISlider!
-    @IBOutlet	 weak var greenSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
     @IBOutlet weak var redValueLabel: UILabel!
     @IBOutlet weak var greenValueLabel: UILabel!
     @IBOutlet weak var blueValueLabel: UILabel!
-    
-    var redColorValue: CGFloat = 0
-    var greenColorValue: CGFloat = 0
-    var blueColorValue: CGFloat = 0
+
+    @IBOutlet weak var redTextField: UITextField!
+    @IBOutlet weak var greenTextField: UITextField!
+    @IBOutlet weak var blueTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        
+        [redTextField, greenTextField, blueTextField].forEach{ $0?.delegate = self }
+        
+        navigationItem.hidesBackButton = true
+        redValueLabel.text = string(from: redSlider)
+        greenValueLabel.text = string(from: greenSlider)
+        blueValueLabel.text = string(from: blueSlider)
     }
-    
-    private func setupView() {
-        colorizedView.layer.cornerRadius = view.frame.width / 15
-        colorizedView.backgroundColor = UIColor(red: redColorValue, green: greenColorValue, blue: blueColorValue, alpha: 1)
-    }
-
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         switch sender {
         case redSlider:
-            redValueLabel.text = String(format: "%.2f", redSlider.value)
-            redColorValue = CGFloat(redSlider.value)
+            redValueLabel.text = string(from: redSlider)
         case greenSlider:
-            greenValueLabel.text = String(format: "%.2f", greenSlider.value)
-            greenColorValue = CGFloat(greenSlider.value)
+            greenValueLabel.text = string(from: greenSlider)
         default:
-            blueValueLabel.text = String(format: "%.2f", blueSlider.value)
-            blueColorValue = CGFloat(blueSlider.value)
+            blueValueLabel.text = string(from: blueSlider)
         }
-        
-        colorizedView.backgroundColor = UIColor(red: redColorValue, green: greenColorValue, blue: blueColorValue, alpha: 1)
+        setBackgroundColor()
+    }
+
+    
+    private func setBackgroundColor() {
+        colorizedView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
     }
     
+    private func setupView() {
+        colorizedView.layer.cornerRadius = view.frame.width / 15
+        setBackgroundColor()
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
+    }
+}
+
+extension ColorizerViewController: UITextFieldDelegate {
+
 }
 
